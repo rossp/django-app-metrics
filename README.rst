@@ -37,17 +37,20 @@ Celery_ and `django-celery`_ must be installed, however if you do not wish to
 actually use Celery you can simply set ``CELERY_ALWAYS_EAGER = True`` in your
 settings and it will behave as if Celery was not configured.
 
+py-sparkblocks_ is used to add basic 'sparkblock' charts to outgoing e-mails.
+
 .. _Celery: http://celeryproject.org/
 .. _`django-celery`: http://ask.github.com/django-celery/
+.. _py-sparkblocks: https://github.com/1stvamp/py-sparkblocks
 
-Django 1.2 and above
+Django 1.2 or above is required.
 
 Usage
 =====
 
 ::
 
-  from app_metrics.utils import create_metric, metric, timing, Timer, gauge
+  from app_metrics.utils import create_metric, create_metric_set, metric, timing, Timer, gauge
 
   # Create a new metric to track
   my_metric = create_metric(name='New User Metric', slug='new_user_signup')
@@ -202,5 +205,5 @@ Then simply run::
 TODO
 ----
 
-- Improve text and HTML templates to display trending data well
+- Include web-visible versions of templates, perhaps with longer timeframes for analysis.
 
