@@ -27,6 +27,7 @@ setup(
         'django-celery',
         'py-sparkblocks',
     ],
+    tests_require = ['mock', 'django-coverage', 'coverage'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
