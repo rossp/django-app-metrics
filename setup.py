@@ -25,6 +25,7 @@ setup(
     install_requires = [
         'celery',
         'django-celery',
+        'py-sparkblocks',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

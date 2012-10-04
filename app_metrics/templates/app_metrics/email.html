@@ -1,4 +1,4 @@
-<html>
+<html>{% load sparkblocks_tags %}
 <body>
 <h1>{{ metric_set.name }} Report for {{ today|date:"D d M Y" }}</h1> 
 
@@ -19,6 +19,7 @@
         <th>Yesterday</th>
         <th>Prev Week</th>
         <th>Prev Month</th>
+        <th>Trend</th>
     </tr>
     {% for m in metrics %} 
     <tr> 
@@ -26,6 +27,7 @@
         <td>{{ m.trends.yesterday.yesterday }}</td>
         <td>{{ m.trends.yesterday.previous_week }}</td>
         <td>{{ m.trends.yesterday.previous_month }}</td>
+        <td>{% sparkblock m.trends.yesterday.yesterday m.trends.yesterday.previous_week m.trends.yesterday.previous_month %}</td>
     </tr> 
 {% endfor %} 
 </table> 
@@ -38,6 +40,7 @@
         <th>Last Week</th>
         <th>This Week Last Month</th>
         <th>This Week Last Year</th>
+        <th>Trend</th>
     </tr>
     {% for m in metrics %} 
     <tr> 
@@ -47,6 +50,7 @@
         <td>{{ m.trends.week.previous_week }}</td>
         <td>{{ m.trends.week.previous_month_week }}</td>
         <td>{{ m.trends.week.previous_year_week }}</td>
+        <td>{% sparkblock m.trends.current_day m.trends.week.week m.trends.week.previous_week m.trends.week.previous_month_week m.trends.week.prevoius_year_week %}</td>
     </tr> 
 {% endfor %} 
 </table> 
@@ -58,6 +62,7 @@
         <th>Month to Date</th>
         <th>Last Month</th>
         <th>This Month Last Year</th>
+        <th>Trend</th>
     </tr>
     {% for m in metrics %} 
     <tr> 
@@ -65,6 +70,7 @@
         <td>{{ m.trends.month.month }}</td>
         <td>{{ m.trends.month.previous_month }}</td>
         <td>{{ m.trends.month.previous_year_month }}</td>
+        <td>{% sparkblock m.trends.month.month m.trends.month.previous_month m.trends.month.previous_year_month %}</td>
     </tr> 
 {% endfor %} 
 </table> 
