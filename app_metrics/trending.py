@@ -45,11 +45,21 @@ def _trending_for_current_day(metric=None):
 def _trending_for_yesterday(metric=None):
     today = datetime.date.today()
     yesterday_date = today - datetime.timedelta(days=1)
+    minus2_date = today - datetime.timedelta(days=2)
+    minus3_date = today - datetime.timedelta(days=3)
+    minus4_date = today - datetime.timedelta(days=4)
+    minus5_date = today - datetime.timedelta(days=5)
+    minus6_date = today - datetime.timedelta(days=6)
     previous_week_date = today - datetime.timedelta(weeks=1)
     previous_month_date = get_previous_month(today)
 
     data = {
             'yesterday': 0,
+            'minus2': 0,
+            'minus3': 0,
+            'minus4': 0,
+            'minus5': 0,
+            'minus6': 0,
             'previous_week': 0,
             'previous_month': 0,
     }
@@ -57,6 +67,36 @@ def _trending_for_yesterday(metric=None):
     try:
         yesterday = MetricDay.objects.get(metric=metric, created=yesterday_date)
         data['yesterday'] = yesterday.num
+    except ObjectDoesNotExist:
+        pass
+    
+    try:
+        metricdata = MetricDay.objects.get(metric=metric, created=minus2_date)
+        data['minus2'] = metricdata.num
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        metricdata = MetricDay.objects.get(metric=metric, created=minus3_date)
+        data['minus3'] = metricdata.num
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        metricdata = MetricDay.objects.get(metric=metric, created=minus4_date)
+        data['minus4'] = metricdata.num
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        metricdata = MetricDay.objects.get(metric=metric, created=minus5_date)
+        data['minus5'] = metricdata.num
+    except ObjectDoesNotExist:
+        pass
+
+    try:
+        metricdata = MetricDay.objects.get(metric=metric, created=minus6_date)
+        data['minus6'] = metricdata.num
     except ObjectDoesNotExist:
         pass
 

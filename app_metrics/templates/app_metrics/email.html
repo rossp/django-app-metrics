@@ -17,6 +17,11 @@
     <tr>
         <th></th>
         <th>{% trans "yesterday"|capfirst %}</th>
+        <th>{% trans "day before"|capfirst %}</th>
+        <th>{{ dates.minus3 }}</th>
+        <th>{{ dates.minus4 }}</th>
+        <th>{{ dates.minus5 }}</th>
+        <th>{{ dates.minus6 }}</th>
         <th>{% trans "prev week"|capfirst %}</th>
         <th>{% trans "prev month"|capfirst %}</th>
         <th>{% trans "trend"|capfirst %}</th>
@@ -25,9 +30,14 @@
     <tr>
         <td>{{ m.metric.name }}</td>
         <td>{{ m.trends.yesterday.yesterday }}</td>
+        <td>{{ m.trends.yesterday.minus2 }}</td>
+        <td>{{ m.trends.yesterday.minus3 }}</td>
+        <td>{{ m.trends.yesterday.minus4 }}</td>
+        <td>{{ m.trends.yesterday.minus5 }}</td>
+        <td>{{ m.trends.yesterday.minus6 }}</td>
         <td>{{ m.trends.yesterday.previous_week }}</td>
         <td>{{ m.trends.yesterday.previous_month }}</td>
-        <td>{% sparkblock m.trends.yesterday.yesterday m.trends.yesterday.previous_week m.trends.yesterday.previous_month %}</td>
+        <td>{% sparkblock m.trends.yesterday.yesterday m.trends.yesterday.minus2 m.trends.yesterday.minus3 m.trends.yesterday.minus4 m.trends.yesterday.minus5 m.trends.yesterday.minus6 m.trends.yesterday.previous_week %}</td>
     </tr> 
 {% endfor %} 
 </table> 

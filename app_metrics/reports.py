@@ -28,11 +28,19 @@ def generate_report(metric_set=None, html=False):
         if not activity_today:
             return None, None
 
+    dates = {}
+    today = datetime.date.today()
+    dates['minus2'] = today - datetime.timedelta(days=2)
+    dates['minus3'] = today - datetime.timedelta(days=3)
+    dates['minus4'] = today - datetime.timedelta(days=4)
+    dates['minus5'] = today - datetime.timedelta(days=5)
+    dates['minus6'] = today - datetime.timedelta(days=6)
 
     message = render_to_string('app_metrics/email.txt', {
                             'metric_set': metric_set,
                             'metrics': metric_trends,
                             'today': datetime.date.today(),
+                            'dates': dates,
                 })
 
     if html:
@@ -40,6 +48,7 @@ def generate_report(metric_set=None, html=False):
                             'metric_set': metric_set,
                             'metrics': metric_trends,
                             'today': datetime.date.today(),
+                            'dates': dates,
                 })
 
         return message, message_html
