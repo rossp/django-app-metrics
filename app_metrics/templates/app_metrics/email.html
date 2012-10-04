@@ -1,4 +1,4 @@
-{% load i18n, sparkblocks_tags %}<html>
+{% load i18n sparkblocks_tags %}<html>
 <body>
 <h1>{% blocktrans with metric_set.name as name and today|date:"D d M Y" as date %}{{ name }} report for {{ date }}{% endblocktrans %}</h1>
 
